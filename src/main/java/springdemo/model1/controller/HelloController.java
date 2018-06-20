@@ -1,6 +1,7 @@
 package springdemo.model1.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -11,9 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    @RequestMapping
-    @ResponseBody
-    public String hello(){
-        return "hello world!";
+    @RequestMapping("/")
+    public String hello(Model model){
+        model.addAttribute("message","hello from the controller");
+        return "resultPage";
     }
 }
