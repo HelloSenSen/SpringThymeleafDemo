@@ -8,16 +8,23 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE")
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
 
-group = 'springBootDemo'
-version = '0.0.1-SNAPSHOT'
+jar {
+    baseName = 'springdemo'
+    version = '0.0.1-SNAPSHOT'
+}
+
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     maven {url="http://116.228.222.130:18081/nexus/content/groups/public/"}
@@ -32,7 +39,7 @@ dependencies {
 //    compile('org.springframework.boot:spring-boot-starter-data-redis')
 //    compile('org.springframework.boot:spring-boot-starter-freemarker')
 //    compile('org.springframework.boot:spring-boot-starter-security')
-//    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 //    compile('org.springframework.boot:spring-boot-starter-validation')
     compile('org.springframework.boot:spring-boot-starter-web')
 //    compile('org.springframework.boot:spring-boot-starter-websocket')
