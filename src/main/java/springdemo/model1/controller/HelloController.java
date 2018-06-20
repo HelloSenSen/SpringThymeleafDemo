@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
 
     @RequestMapping("/")
-    public String hello(@RequestParam("name") String username,  Model model){
+    public String hello(@RequestParam(name = "name",defaultValue = "world") String username,  Model model){
         model.addAttribute("message","Hello,"+username);
         return "resultPage";
     }
