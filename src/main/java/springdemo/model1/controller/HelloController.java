@@ -18,6 +18,6 @@ public class HelloController {
     @RequestMapping
     @ResponseBody
     public String hello(){
-
+        return "hello world!";
     }
 }
