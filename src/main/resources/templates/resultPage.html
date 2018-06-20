@@ -5,6 +5,6 @@
     <title>Hello thymeleaf</title>
 </head>
 <body>
-    <span th:text="${message}">Hello html</span>
+    <span th:each="msg : ${messages}" th:text="${msg}"> default msg</span>
 </body>
 </html>
