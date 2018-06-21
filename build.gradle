@@ -47,6 +47,11 @@ dependencies {
 //    runtime('mysql:mysql-connector-java')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 //    testCompile('org.springframework.security:spring-security-test')
+
+    compile 'org.springframework.boot:spring-boot-starter-social-twitter:1.5.9.RELEASE'
+
+    compile 'org.webjars:jquery:1.10.2'
+    compile 'org.webjars:materializecss:1.0.0-rc.1'
 }
 
 
