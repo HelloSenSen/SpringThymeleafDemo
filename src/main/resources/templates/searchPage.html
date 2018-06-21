@@ -12,7 +12,7 @@
         <div id="errorMessage card-panel" class="red lighten-2" th:if="${error}">
             <span class="card-title" th:text="${error}"></span>
         </div>
-        <form action="/postSearch" method="post" class="col s12">
+        <form th:action="@{/postSearch}" method="post" class="col s12">
             <div class="row center">
                 <div class="input-field">
                     <i class="mdi-action-search prefix"></i>
