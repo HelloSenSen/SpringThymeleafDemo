@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://localhost/thymeleaf/layout"
+      layout:decorator="layout/default">
+<head>
+    <title>Search</title>
+</head>
+<body>
+<div class="row" layout:fragment="content">
+    <h4 class="indigo-text center">Please enter a search term</h4>
+    <form action="/result" method="get" class="col s12">
+        <div class="row center"></div>
+            <div class="input-field col s6 offset-s3">
+                <i class="mdi-action-search prefix"></i>
+                <input type="text" id="search" name="search" class="validate" />
+                <label for="search">Search</label>
+            </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package springdemo.model1.web;
 
 import org.springframework.social.twitter.api.Tweet;
+import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.TwitterProfile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ import java.util.stream.IntStream;
  * @author Sunnysen
  */
 @Controller
-public class HelloController {
+public class TweetController {
 
     private static final LongAdder ATOMIC_LONG_ID = new LongAdder();
     private static final Instant START_TIME = Instant.now();
@@ -27,6 +28,11 @@ public class HelloController {
     private static final int TWEET_BUILDER_NUM_MAX_BOUND = 20;
 
     @RequestMapping("/")
+    public String home(){
+        return "searchPage";
+    }
+
+    @RequestMapping("/result")
     public String hello(@RequestParam(name = "search",defaultValue = "world") String search,  Model model){
         List<Tweet> tweets = IntStream.range(0, TWEET_BUILDER_NUM_RANDOM.nextInt(TWEET_BUILDER_NUM_MAX_BOUND)).mapToObj(i -> tweetBuilder()).collect(Collectors.toList());
         model.addAttribute("tweets",tweets);
