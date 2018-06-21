@@ -1,13 +1,15 @@
 package springdemo.model1.web;
 
 import org.springframework.social.twitter.api.Tweet;
-import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.TwitterProfile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.atomic.LongAdder;
@@ -30,6 +32,19 @@ public class TweetController {
     @RequestMapping("/")
     public String home(){
         return "searchPage";
+    }
+
+    @RequestMapping(path="/postSearch",method = RequestMethod.POST)
+    public String postSearch(HttpServletRequest request, RedirectAttributes redirectAttributes){
+        String search = request.getParameter("search");
+        //不允许搜索含有struts的关键字
+        if(search==null||search.isEmpty()||search.toLowerCase().contains("struts")){
+            redirectAttributes.addFlashAttribute("error","try using spring instead!");
+            return "redirect:/";
+        }
+        redirectAttributes.addAttribute("search",search);
+        //302重定向 url改变
+        return "redirect:result";
     }
 
     @RequestMapping("/result")
