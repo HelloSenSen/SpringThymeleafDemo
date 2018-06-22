@@ -9,14 +9,14 @@
     </head>
     <body lang="zh-cmn-Hans">
         <ul id="index-dropdown" class="dropdown-content">
-            <li><a th:href="@{/postSearch}">SearchPage</a></li>
-            <li><a th:href="@{/profile}">ProfilePage</a></li>
+            <li><a th:href="@{/postSearch}" >SearchPage</a></li>
+            <li><a th:href="@{/profile}" >ProfilePage</a></li>
         </ul>
         <nav>
             <div class="nav-wrapper indigo">
                 <ul class="right">
                     <li>
-                        <a href="#!" class="dropdown-button" dataactivates="index-dropdown"><i class="right"></i></a></li>
+                        <a href="#!" class="dropdown-button" dataactivates="index-dropdown"><i class="mdi-action-language right"></i>Index</a></li>
                 </ul>
             </div>
         </nav>
@@ -25,8 +25,8 @@
         </section>
         <script src="/webjars/jquery/2.1.4/jquery.js"></script>
         <script src="/webjars/materializecss/1.0.0-rc.1/js/materialize.js"></script>
-        <script type="text/javascript">
-            // ${".dropdown-button"}.dropdown();
+        <script type="text/javascript" >
+            $(".dropdown-button").dropdown();
         </script>
     </body>
 </html>
