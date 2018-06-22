@@ -50,7 +50,7 @@ dependencies {
 
     compile 'org.springframework.boot:spring-boot-starter-social-twitter:1.5.9.RELEASE'
 
-    compile 'org.webjars:jquery:1.10.2'
+    compile 'org.webjars:jquery:2.1.4'
     compile 'org.webjars:materializecss:1.0.0-rc.1'
 }
 

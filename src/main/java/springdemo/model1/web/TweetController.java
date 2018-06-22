@@ -30,7 +30,12 @@ public class TweetController {
     private static final int TWEET_BUILDER_NUM_MAX_BOUND = 20;
 
     @RequestMapping("/")
-    public String home(){
+    public String index(){
+        return "index";
+    }
+
+    @RequestMapping("/searchPage")
+    public String search(){
         return "searchPage";
     }
 
@@ -39,8 +44,8 @@ public class TweetController {
         String search = request.getParameter("search");
         //不允许搜索含有struts的关键字
         if(search==null||search.isEmpty()||search.toLowerCase().contains("struts")){
-            redirectAttributes.addFlashAttribute("error","try using spring instead!");
-            return "redirect:/";
+            redirectAttributes.addFlashAttribute("error","不允许搜索含有struts的关键字");
+            return "redirect:/searchPage";
         }
         redirectAttributes.addAttribute("search",search);
         //302重定向 url改变
