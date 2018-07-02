@@ -1,7 +1,8 @@
-package springdemo.model1.dto;
+package springdemo.profile.vo;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import springdemo.date.PastLocalDate;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,13 +10,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileFormDTO {
+/**
+ * @author sunnysen
+ */
+public class ProfileFormVo {
     @Size(min = 2 )
     private String twitterHandle;
     @Email
     @NotEmpty
     private String email;
     @NotNull
+    @PastLocalDate
     private LocalDate birthDate;
     @NotEmpty
     private List<String> tastes = new ArrayList<>();
@@ -44,9 +49,17 @@ public class ProfileFormDTO {
         this.birthDate = birthDate;
     }
 
+    public List<String> getTastes() {
+        return tastes;
+    }
+
+    public void setTastes(List<String> tastes) {
+        this.tastes = tastes;
+    }
+
     @Override
     public String toString() {
-        return "ProfileFormDTO{" +
+        return "ProfileFormVo{" +
                 "twitterHandle='" + twitterHandle + '\'' +
                 ", email='" + email + '\'' +
                 ", birthDate=" + birthDate +

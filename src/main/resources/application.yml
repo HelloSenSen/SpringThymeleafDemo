@@ -5,6 +5,10 @@ server:
 spring:
   thymeleaf:
     cache: false
+  mvc:
+    locale: zh
+  messages:
+    cache-seconds: 0
 logging:
   level:
     org:

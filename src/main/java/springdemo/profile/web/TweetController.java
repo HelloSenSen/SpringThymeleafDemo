@@ -1,4 +1,4 @@
-package springdemo.model1.web;
+package springdemo.profile.web;
 
 import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.TwitterProfile;
