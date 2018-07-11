@@ -51,7 +51,17 @@ public class PictureUploadController {
         this.userProfileSession = userProfileSession;
     }
 
-
+    /**
+     * 根据picturePath获取图片 将图片写入响应
+     * @param response
+     * @throws IOException
+     */
+    @RequestMapping(value="/uploadedPicture")
+    public void getUploadedPicture(HttpServletResponse response,@ModelAttribute("picturePath") Resource picturePath) throws IOException{
+        String type = URLConnection.guessContentTypeFromName(picturePath.getFilename());
+        response.setHeader("Content-Type",type);
+        IOUtils.copy(picturePath.getInputStream(),response.getOutputStream());
+    }
 
     /**
      * 资源描述 默认图片
