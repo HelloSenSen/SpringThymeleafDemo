@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * @author Sunnysen
  */
 @Service
-public class SearchService {
+public class SearchService implements TwitterSearch {
 
     private Twitter twitter;
 
@@ -29,11 +29,17 @@ public class SearchService {
      * @param keywords 关键词列表
      * @return
      */
+    @Override
     public List<Tweet> search(String searchType, List<String> keywords) {
         //生成搜索条件
-        List<SearchParameters> searches = keywords.stream().map(taste -> createSearchParam(searchType, taste)).collect(Collectors.toList());
+        List<SearchParameters> searches = keywords.stream()
+                .map(taste -> createSearchParam(searchType, taste))
+                .collect(Collectors.toList());
         //封装搜索结果
-        List<Tweet> results = searches.stream().map(params -> twitter.searchOperations().search(params)).flatMap(searchResults -> searchResults.getTweets().stream()).collect(Collectors.toList());
+        List<Tweet> results = searches.stream()
+                .map(params -> twitter.searchOperations().search(params))
+                .flatMap(searchResults -> searchResults.getTweets().stream())
+                .collect(Collectors.toList());
         return results;
     }
 

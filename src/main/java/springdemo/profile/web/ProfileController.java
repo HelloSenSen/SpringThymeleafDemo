@@ -65,7 +65,7 @@ public class ProfileController {
             return "profile/profilePage";
         }
         userProfileSession.saveForm(profileFormVo);
-        return "redirect:/profile";
+        return "redirect:/search/mixed;keywords="+String.join(",",profileFormVo.getTastes());
     }
 
     /**
@@ -83,12 +83,11 @@ public class ProfileController {
     /**
      * 移除喜好条目
      * @param profileFormVo
-     * @param bindingResult
      * @param request
      * @return
      */
     @RequestMapping(value = "/profile",params = {"removeTaste"})
-    public String removeRow(ProfileFormVo profileFormVo, BindingResult bindingResult, HttpServletRequest request){
+    public String removeRow(ProfileFormVo profileFormVo, HttpServletRequest request){
         Integer rowId = Integer.valueOf(request.getParameter("removeTaste"));
         profileFormVo.getTastes().remove(rowId.intValue());
         return "profile/profilePage";

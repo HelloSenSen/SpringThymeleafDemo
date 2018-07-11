@@ -35,7 +35,7 @@ public class TweetController {
     @Autowired
     private Twitter twitter;
 
-    @RequestMapping("/")
+    @RequestMapping("/index")
     public String index(){
         return "index";
     }
@@ -60,9 +60,9 @@ public class TweetController {
 
     @RequestMapping("/result")
     public String hello(@RequestParam(name = "search",defaultValue = "world") String search,  Model model){
-//        List<Tweet> tweets = IntStream.range(0, TWEET_BUILDER_NUM_RANDOM.nextInt(TWEET_BUILDER_NUM_MAX_BOUND)).mapToObj(i -> tweetBuilder()).collect(Collectors.toList());
-        SearchResults searchResults = twitter.searchOperations().search(search);
-        List<Tweet> tweets = searchResults.getTweets();
+        List<Tweet> tweets = IntStream.range(0, TWEET_BUILDER_NUM_RANDOM.nextInt(TWEET_BUILDER_NUM_MAX_BOUND)).mapToObj(i -> tweetBuilder()).collect(Collectors.toList());
+//        SearchResults searchResults = twitter.searchOperations().search(search);
+//        List<Tweet> tweets = searchResults.getTweets();
         model.addAttribute("tweets",tweets);
         model.addAttribute("search",search);
         return "resultPage";

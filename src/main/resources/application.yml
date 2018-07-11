@@ -20,8 +20,3 @@ spring:
     twitter:
       appId:
       appSecret:
-logging:
-  level:
-    org:
-      springframework:
-        web: DEBUG
