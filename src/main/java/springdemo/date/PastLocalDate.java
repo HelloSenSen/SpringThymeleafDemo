@@ -8,9 +8,7 @@ import java.lang.annotation.*;
 import java.time.LocalDate;
 
 /**
- * @auther: Sunnysen
- * @Date: 2018/7/2 14:08
- * @Description:
+ * @author Sunnysen
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)

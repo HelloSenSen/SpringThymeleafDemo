@@ -3,16 +3,21 @@
       xmlns:layout="http://localhost/thymeleaf/layout"
       layout:decorator="layout/default">
 <head>
-    <title>Thymeleaf demo </title>
+    <title>Spring boot mvc demo</title>
 </head>
 <body>
 <div class="row" layout:fragment="content">
-    <h4 class="indigo-text center">Thymeleaf demo </h4>
-    <div class="row center">
-        <a th:href="@{/searchPage}">SearchPage</a> 搜索返回列表页，采用POST-REDIRECT-GET测试 [th:if] [th:action] [th:each]
-    </div>
-    <div class="row center">
-        <a th:href="@{/profile}">ProfilePage</a> 表单提交页，测试 [th:object] [th:field] [th:errors]
+    <h4 class="indigo-text center">Spring boot mvc demo </h4>
+    <div class="col m8 s12 offset-m2">
+        <div class="row s12">
+            <a th:href="@{/searchPage}">SearchPage</a> 搜索返回列表页，采用POST-REDIRECT-GET测试 [th:if] [th:action] [th:each]
+        </div>
+        <div class="row s12">
+            <a th:href="@{/profile}">ProfilePage</a> 表单提交页，测试 [th:object] [th:field] [th:errors]
+        </div>
+        <div class="row s12">
+            <a th:href="@{/upload}">uploadPage</a> 文件上传
+        </div>
     </div>
 </div>
 </body>

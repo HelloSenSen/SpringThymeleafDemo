@@ -1,6 +1,9 @@
 package springdemo.profile.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.twitter.api.SearchResults;
 import org.springframework.social.twitter.api.Tweet;
+import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.TwitterProfile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +32,9 @@ public class TweetController {
     private static final Random TWEET_BUILDER_NUM_RANDOM = new Random();
     private static final int TWEET_BUILDER_NUM_MAX_BOUND = 20;
 
+    @Autowired
+    private Twitter twitter;
+
     @RequestMapping("/")
     public String index(){
         return "index";
@@ -54,7 +60,9 @@ public class TweetController {
 
     @RequestMapping("/result")
     public String hello(@RequestParam(name = "search",defaultValue = "world") String search,  Model model){
-        List<Tweet> tweets = IntStream.range(0, TWEET_BUILDER_NUM_RANDOM.nextInt(TWEET_BUILDER_NUM_MAX_BOUND)).mapToObj(i -> tweetBuilder()).collect(Collectors.toList());
+//        List<Tweet> tweets = IntStream.range(0, TWEET_BUILDER_NUM_RANDOM.nextInt(TWEET_BUILDER_NUM_MAX_BOUND)).mapToObj(i -> tweetBuilder()).collect(Collectors.toList());
+        SearchResults searchResults = twitter.searchOperations().search(search);
+        List<Tweet> tweets = searchResults.getTweets();
         model.addAttribute("tweets",tweets);
         model.addAttribute("search",search);
         return "resultPage";
