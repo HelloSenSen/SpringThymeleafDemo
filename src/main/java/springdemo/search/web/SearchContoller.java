@@ -12,6 +12,7 @@ import springdemo.search.service.SearchService;
 import java.util.List;
 
 /**
+ * 新的搜索控制层
  * @author Sunnysen
  */
 @Controller
@@ -22,6 +23,12 @@ public class SearchContoller {
         this.searchService = searchService;
     }
 
+    /**
+     * 搜索关键词使用矩阵变量
+     * @param searchType
+     * @param keywords
+     * @return
+     */
     @RequestMapping("/search/{searchType}")
     public ModelAndView search(@PathVariable String searchType, @MatrixVariable List<String> keywords){
         List<Tweet> tweets = searchService.search(searchType,keywords);

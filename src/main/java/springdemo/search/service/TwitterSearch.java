@@ -5,6 +5,7 @@ import org.springframework.social.twitter.api.Tweet;
 import java.util.List;
 
 /**
+ *
  * @author Sunnysen
  */
 public interface TwitterSearch {

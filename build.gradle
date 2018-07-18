@@ -53,7 +53,8 @@ dependencies {
     //自定义ConfigurationProperties
     compileOnly "org.springframework.boot:spring-boot-configuration-processor"
 
-
+    //Hex
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.11'
 
     compile 'org.webjars:jquery:2.1.4'
     compile 'org.webjars:materializecss:0.96.0'

@@ -13,9 +13,12 @@ import springdemo.profile.vo.ProfileFormVo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Locale;
 
 /**
+ * 个人信息 控制器
  * @author Sunnysen
  */
 @Controller
@@ -60,12 +63,12 @@ public class ProfileController {
      * @return
      */
     @RequestMapping(value= "/profile" ,params = {"save"},method = RequestMethod.POST)
-    public String saveProfile(@Valid ProfileFormVo profileFormVo, BindingResult bindingResult){
+    public String saveProfile(@Valid ProfileFormVo profileFormVo, BindingResult bindingResult) throws UnsupportedEncodingException {
+        userProfileSession.saveForm(profileFormVo);
         if(bindingResult.hasErrors()){
             return "profile/profilePage";
         }
-        userProfileSession.saveForm(profileFormVo);
-        return "redirect:/search/mixed;keywords="+String.join(",",profileFormVo.getTastes());
+        return "redirect:/search/mixed;keywords="+URLEncoder.encode(String.join(",",profileFormVo.getTastes()),"utf-8");
     }
 
     /**
